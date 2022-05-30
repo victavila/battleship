@@ -1,4 +1,4 @@
-const ship = (length) => {
+const Ship = (length) => {
   const positions = new Array(length).fill(1);
 
   const hit = (num) => {
@@ -13,7 +13,9 @@ const ship = (length) => {
     return sunk;
   };
 
-  return { positions, hit, isSunk };
+  return {
+    length, positions, hit, isSunk,
+  };
 };
 
-export default ship;
+export default Ship;
