@@ -20,12 +20,21 @@ const Gameboard = () => {
   const placeShip = (posX, posY, ship) => {
     if (emptyCheck(posX, posY, ship) && boundsCheck(posX, posY, ship)) {
       for (let i = posX; i < ship.length + posX; i += 1) {
-        board[posY][i] = 1;
+        board[posY][i] = ship.length;
       }
     }
   };
 
-  return { board, placeShip };
+  const receiveAttack = (posX, posY) => {
+    if (board[posY][posX] !== '') {
+      board[posY][posX] = 'hit';
+      return true;
+    }
+    board[posY][posX] = 'miss';
+    return false;
+  };
+
+  return { board, placeShip, receiveAttack };
 };
 
 export default Gameboard;
