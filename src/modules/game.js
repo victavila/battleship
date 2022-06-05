@@ -1,6 +1,7 @@
 import Ship from './ship';
 import Gameboard from './gameboard';
 import Player from './player';
+import renderBoards from './renderBoards';
 
 const loadGame = () => {
   const player1 = Player('player1');
@@ -29,6 +30,7 @@ const loadGame = () => {
   const computerGameboard = Gameboard();
 
   // Render board
+  renderBoards();
 
   // Render ships
 
@@ -36,7 +38,7 @@ const loadGame = () => {
 
   // Start game loop
 
-  const continueGame = true;
+  let continueGame = true;
 
   while (continueGame) {
     // Players attack each others boards
@@ -48,6 +50,7 @@ const loadGame = () => {
     // Check if any ships sunk and display result if so
 
     // Check if game is over
+    continueGame = false;
   }
 };
 
