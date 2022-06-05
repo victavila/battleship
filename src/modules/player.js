@@ -16,7 +16,7 @@ const Player = (name) => {
     return null;
   };
 
-  return { attack, randomAttack };
+  return { name, attack, randomAttack };
 };
 
 export default Player;
