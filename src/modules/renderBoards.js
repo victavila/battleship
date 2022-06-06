@@ -6,12 +6,12 @@ const renderBoards = () => {
     for (let j = 0; j < 10; j += 1) {
       const playerSquare = document.createElement('div');
       playerSquare.setAttribute('data-id', `P-${i}${j}`);
-      playerSquare.classList.add('square');
+      playerSquare.classList.add('p-square');
       playerContainer.appendChild(playerSquare);
 
       const computerSquare = document.createElement('div');
       computerSquare.setAttribute('data-id', `C-${i}${j}`);
-      computerSquare.classList.add('square');
+      computerSquare.classList.add('c-square');
       computerContainer.appendChild(computerSquare);
     }
   }

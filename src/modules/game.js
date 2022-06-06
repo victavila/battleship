@@ -2,6 +2,7 @@ import Ship from './ship';
 import Gameboard from './gameboard';
 import Player from './player';
 import renderBoards from './renderBoards';
+import updateBoards from './updateBoards';
 
 const loadGame = () => {
   const player1 = Player('player1');
@@ -29,23 +30,36 @@ const loadGame = () => {
   const playerGameboard = Gameboard();
   const computerGameboard = Gameboard();
 
-  // Render board
   renderBoards();
 
-  // Render ships
-
   // Place ships on respective boards
+  playerGameboard.placeShip(0, 0, Carrier1);
+  playerGameboard.placeShip(0, 2, Battleship1);
+  playerGameboard.placeShip(0, 4, Destroyer1);
+  playerGameboard.placeShip(0, 6, Submarine1);
+  playerGameboard.placeShip(0, 8, PatrolBoat1);
+
+  computerGameboard.placeShip(0, 0, Carrier2);
+  computerGameboard.placeShip(0, 2, Battleship2);
+  computerGameboard.placeShip(0, 4, Destroyer2);
+  computerGameboard.placeShip(0, 6, Submarine2);
+  computerGameboard.placeShip(0, 8, PatrolBoat2);
+
+  // Render boards
+  updateBoards(playerGameboard.board, computerGameboard.board);
 
   // Start game loop
-
   let continueGame = true;
 
   while (continueGame) {
     // Players attack each others boards
 
     // Send attacks(hit or miss) to gameboards
+    playerGameboard.receiveAttack(0, 0);
+    playerGameboard.receiveAttack(0, 1);
 
     // Render attacks(hit or miss) on boards
+    updateBoards(playerGameboard.board, computerGameboard.board);
 
     // Check if any ships sunk and display result if so
 

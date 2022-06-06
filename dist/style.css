@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.boards {
+    display: flex;
+    gap: 100px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(10, 25px);
+    grid-template-rows: repeat(10, 25px);
+    gap: 2px
+}
+
+.p-square, .c-square {
+    border: 1px solid black;
+}
+
+.purple {
+    background-color: purple;
+}
