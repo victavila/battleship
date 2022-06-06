@@ -1,6 +1,6 @@
 import Ship from '../modules/ship';
 
-const newShip = Ship(2);
+const newShip = Ship(2, 'Patrol boat');
 
 test('Hit at index 0', () => {
   newShip.hit(0);
@@ -14,4 +14,8 @@ test('isSunk returns true for sunken ship', () => {
 
 test('Correct length is returned', () => {
   expect(newShip.length).toBe(2);
+});
+
+test('Ship name is returned', () => {
+  expect(newShip.name).toBe('Patrol boat');
 });

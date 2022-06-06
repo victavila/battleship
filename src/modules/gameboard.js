@@ -20,7 +20,7 @@ const Gameboard = () => {
   const placeShip = (posX, posY, ship) => {
     if (emptyCheck(posX, posY, ship) && boundsCheck(posX, posY, ship)) {
       for (let i = posX; i < ship.length + posX; i += 1) {
-        board[posY][i] = ship.length;
+        board[posY][i] = ship.name;
       }
     }
   };

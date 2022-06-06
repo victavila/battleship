@@ -11,19 +11,19 @@ const loadGame = () => {
   const player1Ships = [];
   const computerShips = [];
 
-  const Carrier1 = Ship(5);
-  const Battleship1 = Ship(4);
-  const Destroyer1 = Ship(3);
-  const Submarine1 = Ship(3);
-  const PatrolBoat1 = Ship(2);
+  const Carrier1 = Ship(5, 'Carrier');
+  const Battleship1 = Ship(4, 'Battleship');
+  const Destroyer1 = Ship(3, 'Destroyer');
+  const Submarine1 = Ship(3, 'Submarine');
+  const PatrolBoat1 = Ship(2, 'Patrol');
 
   player1Ships.push(Carrier1, Battleship1, Destroyer1, Submarine1, PatrolBoat1);
 
-  const Carrier2 = Ship(5);
-  const Battleship2 = Ship(4);
-  const Destroyer2 = Ship(3);
-  const Submarine2 = Ship(3);
-  const PatrolBoat2 = Ship(2);
+  const Carrier2 = Ship(5, 'Carrier');
+  const Battleship2 = Ship(4, 'Battleship');
+  const Destroyer2 = Ship(3, 'Destroyer');
+  const Submarine2 = Ship(3, 'Submarine');
+  const PatrolBoat2 = Ship(2, 'Patrol');
 
   computerShips.push(Carrier2, Battleship2, Destroyer2, Submarine2, PatrolBoat2);
 

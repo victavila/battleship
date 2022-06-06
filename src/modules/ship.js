@@ -1,4 +1,4 @@
-const Ship = (length) => {
+const Ship = (length, name) => {
   const positions = new Array(length).fill(1);
 
   const hit = (num) => {
@@ -14,7 +14,7 @@ const Ship = (length) => {
   };
 
   return {
-    length, positions, hit, isSunk,
+    length, name, positions, hit, isSunk,
   };
 };
 
