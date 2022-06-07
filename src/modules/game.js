@@ -55,17 +55,28 @@ const loadGame = () => {
       const y = e.target.dataset.id[2];
       const coord = player1.attack(x, y, computerGameboard.board);
       if (coord !== null) {
+        const shipName = computerGameboard.board[coord[1]][coord[0]];
         computerGameboard.receiveAttack(coord[0], coord[1]);
         updateBoards(playerGameboard.board, computerGameboard.board);
         disableBoard.on();
+        for (let i = 0; i < computerShips.length; i += 1) {
+          if (computerShips[i].name === shipName) {
+            if (computerShips[i].isSunk()) {
+              // Add ship sunk display functionality here
+              console.log(`${computerShips[i].name}`);
+            }
+          }
+        }
       }
       let randCoord = computer.randomAttack(playerGameboard.board);
       while (randCoord === null) {
         randCoord = computer.randomAttack(playerGameboard.board);
       }
       playerGameboard.receiveAttack(randCoord[0], randCoord[1]);
-      setTimeout(updateBoards(playerGameboard.board, computerGameboard.board), 5000);
-      disableBoard.off();
+      updateBoards(playerGameboard.board, computerGameboard.board);
+      setTimeout(() => {
+        disableBoard.off();
+      }, 1000);
       if (playerGameboard.gameOver() || computerGameboard.gameOver()) {
         disableBoard.on();
       }
