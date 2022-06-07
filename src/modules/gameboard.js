@@ -1,6 +1,8 @@
 const Gameboard = () => {
   const board = Array(10).fill('').map(() => Array(10).fill(''));
 
+  const ships = ['Carrier', 'Battleship', 'Destroyer', 'Submarine', 'Patrol'];
+
   const emptyCheck = (posX, posY, ship) => {
     for (let i = posX; i < ship.length + posX; i += 1) {
       if (board[posY][i] !== '') {
@@ -34,7 +36,20 @@ const Gameboard = () => {
     return false;
   };
 
-  return { board, placeShip, receiveAttack };
+  const gameOver = () => {
+    for (let i = 0; i < 10; i += 1) {
+      for (let j = 0; j < 10; j += 1) {
+        if (ships.includes(board[i][j])) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
+  return {
+    board, placeShip, receiveAttack, gameOver,
+  };
 };
 
 export default Gameboard;
