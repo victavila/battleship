@@ -17,8 +17,13 @@
 
 .p-square, .c-square {
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .purple {
     background-color: purple;
+}
+
+.disable {
+    border-color: gray;
 }

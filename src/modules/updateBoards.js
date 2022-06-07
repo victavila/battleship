@@ -2,6 +2,7 @@ const playerContainer = document.querySelector('.player-board');
 const computerContainer = document.querySelector('.computer-board');
 
 const playerDivs = playerContainer.children;
+const computerDivs = computerContainer.children;
 
 const updateBoards = (playerBoard, computerBoard) => {
   // Make ships on player board visible
@@ -16,11 +17,14 @@ const updateBoards = (playerBoard, computerBoard) => {
       } else if (playerBoard[i][j] === 'miss') {
         playerDivs[count].textContent = 'o';
       }
+      if (computerBoard[i][j] === 'hit') {
+        computerDivs[count].textContent = 'x';
+      } else if (computerBoard[i][j] === 'miss') {
+        computerDivs[count].textContent = 'o';
+      }
       count += 1;
     }
   }
-
-  // Update hits or misses on boards
 };
 
 export default updateBoards;

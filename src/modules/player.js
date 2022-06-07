@@ -1,7 +1,8 @@
 const Player = (name) => {
+  const ships = ['Carrier', 'Battleship', 'Destroyer', 'Submarine', 'Patrol'];
   const attack = (posX, posY, board) => {
     if (posX > 9 || posY > 9) { return null; }
-    if (board[posY][posX] === '') {
+    if (board[posY][posX] === '' || ships.includes(board[posY][posX])) {
       return [posX, posY];
     }
     return null;
@@ -10,7 +11,7 @@ const Player = (name) => {
   const randomAttack = (board) => {
     const posX = Math.floor(Math.random() * 10);
     const posY = Math.floor(Math.random() * 10);
-    if (board[posY][posX] === '') {
+    if (board[posY][posX] === '' || ships.includes(board[posY][posX])) {
       return [posX, posY];
     }
     return null;

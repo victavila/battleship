@@ -3,6 +3,7 @@ import Gameboard from './gameboard';
 import Player from './player';
 import renderBoards from './renderBoards';
 import updateBoards from './updateBoards';
+import disableBoard from './disableBoard';
 
 const loadGame = () => {
   const player1 = Player('player1');
@@ -48,24 +49,36 @@ const loadGame = () => {
   // Render boards
   updateBoards(playerGameboard.board, computerGameboard.board);
 
-  // Start game loop
-  let continueGame = true;
+  document.addEventListener('click', (e) => {
+    if (e.target.className === 'c-square') {
+      const x = e.target.dataset.id[3];
+      const y = e.target.dataset.id[2];
+      const coord = player1.attack(x, y, computerGameboard.board);
+      if (coord !== null) {
+        computerGameboard.receiveAttack(coord[0], coord[1]);
+        updateBoards(playerGameboard.board, computerGameboard.board);
+        disableBoard.on();
+      }
+      let randCoord = computer.randomAttack(playerGameboard.board);
+      while (randCoord === null) {
+        randCoord = computer.randomAttack(playerGameboard.board);
+      }
+      playerGameboard.receiveAttack(randCoord[0], randCoord[1]);
+      setTimeout(updateBoards(playerGameboard.board, computerGameboard.board), 5000);
+      disableBoard.off();
+      if (playerGameboard.gameOver() || computerGameboard.gameOver()) {
+        disableBoard.on();
+      }
+    }
+  });
 
-  while (continueGame) {
-    // Players attack each others boards
+  // Computer sends random attack
 
-    // Send attacks(hit or miss) to gameboards
-    playerGameboard.receiveAttack(0, 0);
-    playerGameboard.receiveAttack(0, 1);
+  // Render attacks(hit or miss) on boards
 
-    // Render attacks(hit or miss) on boards
-    updateBoards(playerGameboard.board, computerGameboard.board);
+  // Check if any ships sunk and display result if so
 
-    // Check if any ships sunk and display result if so
-
-    // Check if game is over
-    continueGame = false;
-  }
+  // Check if game is over
 };
 
 export default loadGame;
