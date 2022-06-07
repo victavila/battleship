@@ -4,10 +4,11 @@ import Player from './player';
 import renderBoards from './renderBoards';
 import updateBoards from './updateBoards';
 import disableBoard from './disableBoard';
+import setDisplay from './display';
 
 const loadGame = () => {
-  const player1 = Player('player1');
-  const computer = Player('computer');
+  const player1 = Player('Player');
+  const computer = Player('Computer');
 
   const player1Ships = [];
   const computerShips = [];
@@ -30,6 +31,8 @@ const loadGame = () => {
 
   const playerGameboard = Gameboard();
   const computerGameboard = Gameboard();
+
+  setDisplay.setUp();
 
   renderBoards();
 
@@ -59,11 +62,12 @@ const loadGame = () => {
         computerGameboard.receiveAttack(coord[0], coord[1]);
         updateBoards(playerGameboard.board, computerGameboard.board);
         disableBoard.on();
+        setDisplay.computerTurn();
         for (let i = 0; i < computerShips.length; i += 1) {
           if (computerShips[i].name === shipName) {
+            computerShips[i].hit();
             if (computerShips[i].isSunk()) {
-              // Add ship sunk display functionality here
-              console.log(`${computerShips[i].name}`);
+              setDisplay.shipSunk(computer.name, computerShips[i].name);
             }
           }
         }
@@ -72,13 +76,37 @@ const loadGame = () => {
       while (randCoord === null) {
         randCoord = computer.randomAttack(playerGameboard.board);
       }
+      const shipName = playerGameboard.board[randCoord[1]][randCoord[0]];
       playerGameboard.receiveAttack(randCoord[0], randCoord[1]);
       updateBoards(playerGameboard.board, computerGameboard.board);
       setTimeout(() => {
         disableBoard.off();
-      }, 1000);
-      if (playerGameboard.gameOver() || computerGameboard.gameOver()) {
-        disableBoard.on();
+      }, 1500);
+      setTimeout(() => {
+        setDisplay.playerTurn();
+      }, 1500);
+      for (let i = 0; i < player1Ships.length; i += 1) {
+        if (player1Ships[i].name === shipName) {
+          player1Ships[i].hit();
+          if (player1Ships[i].isSunk()) {
+            setDisplay.shipSunk(player1.name, player1Ships[i].name);
+          }
+        }
+      }
+      if (playerGameboard.gameOver()) {
+        setTimeout(() => {
+          disableBoard.on();
+        }, 1500);
+        setTimeout(() => {
+          setDisplay.gameOver(computer.name);
+        }, 1500);
+      } else if (computerGameboard.gameOver()) {
+        setTimeout(() => {
+          disableBoard.on();
+        }, 1500);
+        setTimeout(() => {
+          setDisplay.gameOver(player1.name);
+        }, 1500);
       }
     }
   });

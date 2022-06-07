@@ -18,6 +18,7 @@
 .p-square, .c-square {
     border: 1px solid black;
     cursor: pointer;
+    text-align: center;
 }
 
 .purple {
