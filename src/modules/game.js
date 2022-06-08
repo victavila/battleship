@@ -61,7 +61,8 @@ const loadGame = () => {
         const shipName = computerGameboard.board[coord[1]][coord[0]];
         computerGameboard.receiveAttack(coord[0], coord[1]);
         updateBoards(playerGameboard.board, computerGameboard.board);
-        disableBoard.on();
+        disableBoard.computerOn();
+        disableBoard.playerOff();
         setDisplay.computerTurn();
         for (let i = 0; i < computerShips.length; i += 1) {
           if (computerShips[i].name === shipName) {
@@ -80,7 +81,10 @@ const loadGame = () => {
       playerGameboard.receiveAttack(randCoord[0], randCoord[1]);
       updateBoards(playerGameboard.board, computerGameboard.board);
       setTimeout(() => {
-        disableBoard.off();
+        disableBoard.computerOff();
+      }, 1500);
+      setTimeout(() => {
+        disableBoard.playerOn();
       }, 1500);
       setTimeout(() => {
         setDisplay.playerTurn();
@@ -95,14 +99,20 @@ const loadGame = () => {
       }
       if (playerGameboard.gameOver()) {
         setTimeout(() => {
-          disableBoard.on();
+          disableBoard.computerOn();
+        }, 1500);
+        setTimeout(() => {
+          disableBoard.playerOn();
         }, 1500);
         setTimeout(() => {
           setDisplay.gameOver(computer.name);
         }, 1500);
       } else if (computerGameboard.gameOver()) {
         setTimeout(() => {
-          disableBoard.on();
+          disableBoard.computerOn();
+        }, 1500);
+        setTimeout(() => {
+          disableBoard.playerOn();
         }, 1500);
         setTimeout(() => {
           setDisplay.gameOver(player1.name);
