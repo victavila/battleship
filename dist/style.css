@@ -25,6 +25,16 @@
     background-color: purple;
 }
 
+.miss {
+    background-color: green;
+    color: white;
+}
+
+.hit {
+    background-color: red;
+    color: white;
+}
+
 .disable {
     border-color: lightgray;
 }

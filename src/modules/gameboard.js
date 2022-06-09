@@ -13,7 +13,7 @@ const Gameboard = () => {
   };
 
   const boundsCheck = (posX, posY, ship) => {
-    if (posX + ship.length > 9 || posY > 9) {
+    if (posX + ship.length > 10 || posY > 9) {
       return false;
     }
     return true;

@@ -14,13 +14,17 @@ const updateBoards = (playerBoard, computerBoard) => {
         playerDivs[count].classList.add('purple');
       } else if (playerBoard[i][j] === 'hit') {
         playerDivs[count].textContent = 'x';
+        playerDivs[count].classList.add('hit');
       } else if (playerBoard[i][j] === 'miss') {
         playerDivs[count].textContent = 'o';
+        playerDivs[count].classList.add('miss');
       }
       if (computerBoard[i][j] === 'hit') {
         computerDivs[count].textContent = 'x';
+        computerDivs[count].classList.add('hit');
       } else if (computerBoard[i][j] === 'miss') {
         computerDivs[count].textContent = 'o';
+        computerDivs[count].classList.add('miss');
       }
       count += 1;
     }
