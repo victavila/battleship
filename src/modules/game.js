@@ -5,6 +5,7 @@ import renderBoards from './renderBoards';
 import updateBoards from './updateBoards';
 import disableBoard from './disableBoard';
 import setDisplay from './display';
+import mouseEvents from './mouseEvents';
 
 const loadGame = () => {
   const player1 = Player('Player');
@@ -54,6 +55,8 @@ const loadGame = () => {
             updateBoards(playerGameboard.board, computerGameboard.board);
             if (i === 4) {
               setDisplay.startGame();
+              disableBoard.removePlacement();
+              disableBoard.resetWidths();
             }
             break;
           }
@@ -62,6 +65,8 @@ const loadGame = () => {
       }
     }
   });
+
+  mouseEvents(player1Ships, placement);
 
   for (let i = 0; i < 5; i += 1) {
     let x = Math.floor(Math.random() * 10);

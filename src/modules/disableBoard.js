@@ -35,8 +35,14 @@ const disableBoard = (() => {
     }
   };
 
+  const resetWidths = () => {
+    for (let i = 0; i < 100; i += 1) {
+      playerDivs[i].style.width = '25px';
+    }
+  };
+
   return {
-    computerOn, computerOff, playerOn, playerOff, removePlacement,
+    computerOn, computerOff, playerOn, playerOff, removePlacement, resetWidths,
   };
 })();
 

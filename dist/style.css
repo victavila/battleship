@@ -12,7 +12,6 @@
     display: grid;
     grid-template-columns: repeat(10, 25px);
     grid-template-rows: repeat(10, 25px);
-    gap: 2px
 }
 
 .p-square, .c-square {
@@ -46,5 +45,9 @@
 }
 
 .placement:hover {
+    background-color: aquamarine;
+}
+
+.hover {
     background-color: aquamarine;
 }
