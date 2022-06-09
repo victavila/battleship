@@ -46,10 +46,10 @@ const loadGame = () => {
       const y = e.target.dataset.id[2];
       for (let i = 0; i < 5; i += 1) {
         if (!placement.includes(player1Ships[i])) {
-          if (i < 4) {
-            setDisplay.place(player1Ships[i + 1].name);
-          }
           if (playerGameboard.placementCheck(+x, +y, player1Ships[i])) {
+            if (i < 4) {
+              setDisplay.place(player1Ships[i + 1].name);
+            }
             playerGameboard.placeShip(+x, +y, player1Ships[i]);
             placement.push(player1Ships[i]);
             updateBoards(playerGameboard.board, computerGameboard.board);

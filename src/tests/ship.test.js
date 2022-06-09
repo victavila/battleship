@@ -19,3 +19,12 @@ test('Correct length is returned', () => {
 test('Ship name is returned', () => {
   expect(newShip.name).toBe('Patrol');
 });
+
+test('Ship default direction is horizontal', () => {
+  expect(newShip.getDirection()).toBe('horizontal');
+});
+
+test('Ship direction is vertical after rotating', () => {
+  newShip.rotateShip();
+  expect(newShip.getDirection()).toBe('vertical');
+});

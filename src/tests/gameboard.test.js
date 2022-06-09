@@ -6,6 +6,7 @@ const Battleship = Ship(4, 'Battleship');
 const PatrolBoat = Ship(2, 'Patrol');
 const game = Gameboard();
 const game2 = Gameboard();
+const game3 = Gameboard();
 
 test('Place ship on gameboard at position (0, 0)', () => {
   game.placeShip(0, 0, Carrier);
@@ -41,4 +42,10 @@ test('All ships have been hit so game is over', () => {
   game2.receiveAttack(0, 0);
   game2.receiveAttack(1, 0);
   expect(game2.gameOver()).toBe(true);
+});
+
+test('Vertical placement of ship', () => {
+  PatrolBoat.rotateShip();
+  game3.placeShip(0, 0, PatrolBoat);
+  expect(game3.board).toEqual([['Patrol', '', '', '', '', '', '', '', '', ''], ['Patrol', '', '', '', '', '', '', '', '', '']].concat(new Array(8).fill(new Array(10).fill(''))));
 });

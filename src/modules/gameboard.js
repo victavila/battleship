@@ -13,8 +13,14 @@ const Gameboard = () => {
   };
 
   const boundsCheck = (posX, posY, ship) => {
-    if (posX + ship.length > 10 || posY > 9) {
-      return false;
+    if (ship.getDirection() === 'horizontal') {
+      if (posX + ship.length > 10 || posY > 9) {
+        return false;
+      }
+    } if (ship.getDirection() === 'vertical') {
+      if (posY + ship.length > 10 || posX > 9) {
+        return false;
+      }
     }
     return true;
   };
@@ -28,8 +34,14 @@ const Gameboard = () => {
 
   const placeShip = (posX, posY, ship) => {
     if (placementCheck(posX, posY, ship)) {
-      for (let i = posX; i < ship.length + posX; i += 1) {
-        board[posY][i] = ship.name;
+      if (ship.getDirection() === 'horizontal') {
+        for (let i = posX; i < ship.length + posX; i += 1) {
+          board[posY][i] = ship.name;
+        }
+      } else if (ship.getDirection() === 'vertical') {
+        for (let i = posY; i < ship.length + posY; i += 1) {
+          board[i][posX] = ship.name;
+        }
       }
     }
   };
