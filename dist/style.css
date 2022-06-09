@@ -51,3 +51,8 @@
 .hover {
     background-color: aquamarine;
 }
+
+.play {
+    visibility: hidden;
+    cursor: pointer;
+}

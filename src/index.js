@@ -1,3 +1,3 @@
-import loadGame from './modules/game';
+import gameLoop from './modules/gameLoop';
 
-loadGame();
+gameLoop();

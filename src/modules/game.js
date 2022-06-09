@@ -133,6 +133,9 @@ const loadGame = () => {
       }
       if (playerGameboard.gameOver()) {
         setTimeout(() => {
+          disableBoard.showPlayButton();
+        }, 1500);
+        setTimeout(() => {
           disableBoard.computerOn();
         }, 1500);
         setTimeout(() => {
@@ -142,6 +145,7 @@ const loadGame = () => {
           setDisplay.gameOver(computer.name);
         }, 1500);
       } else if (computerGameboard.gameOver()) {
+        disableBoard.showPlayButton();
         setTimeout(() => {
           disableBoard.computerOn();
         }, 1500);
@@ -154,14 +158,6 @@ const loadGame = () => {
       }
     }
   });
-
-  // Computer sends random attack
-
-  // Render attacks(hit or miss) on boards
-
-  // Check if any ships sunk and display result if so
-
-  // Check if game is over
 };
 
 export default loadGame;

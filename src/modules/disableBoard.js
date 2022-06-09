@@ -5,6 +5,7 @@ const computerDivs = computerContainer.children;
 const playerDivs = playerContainer.children;
 
 const rotateButton = document.querySelector('.rotate');
+const playButton = document.querySelector('.play');
 
 const disableBoard = (() => {
   const computerOn = () => {
@@ -47,8 +48,19 @@ const disableBoard = (() => {
     rotateButton.style.visibility = 'hidden';
   };
 
+  const showPlayButton = () => {
+    playButton.style.visibility = 'visible';
+  };
+
   return {
-    computerOn, computerOff, playerOn, playerOff, removePlacement, resetWidths, hideButton,
+    computerOn,
+    computerOff,
+    playerOn,
+    playerOff,
+    removePlacement,
+    resetWidths,
+    hideButton,
+    showPlayButton,
   };
 })();
 
