@@ -4,9 +4,17 @@ const Gameboard = () => {
   const ships = ['Carrier', 'Battleship', 'Destroyer', 'Submarine', 'Patrol'];
 
   const emptyCheck = (posX, posY, ship) => {
-    for (let i = posX; i < ship.length + posX; i += 1) {
-      if (board[posY][i] !== '') {
-        return false;
+    if (ship.getDirection() === 'horizontal') {
+      for (let i = posX; i < ship.length + posX; i += 1) {
+        if (board[posY][i] !== '') {
+          return false;
+        }
+      }
+    } else if (ship.getDirection() === 'vertical') {
+      for (let i = posY; i < ship.length + posY; i += 1) {
+        if (board[i][posX] !== '') {
+          return false;
+        }
       }
     }
     return true;
@@ -26,8 +34,10 @@ const Gameboard = () => {
   };
 
   const placementCheck = (posX, posY, ship) => {
-    if (emptyCheck(posX, posY, ship) && boundsCheck(posX, posY, ship)) {
-      return true;
+    if (boundsCheck(posX, posY, ship)) {
+      if (emptyCheck(posX, posY, ship)) {
+        return true;
+      }
     }
     return false;
   };

@@ -5,7 +5,7 @@ import renderBoards from './renderBoards';
 import updateBoards from './updateBoards';
 import disableBoard from './disableBoard';
 import setDisplay from './display';
-import mouseEvents from './mouseEvents';
+import Events from './mouseEvents';
 
 const loadGame = () => {
   const player1 = Player('Player');
@@ -57,6 +57,7 @@ const loadGame = () => {
               setDisplay.startGame();
               disableBoard.removePlacement();
               disableBoard.resetWidths();
+              disableBoard.hideButton();
             }
             break;
           }
@@ -66,11 +67,15 @@ const loadGame = () => {
     }
   });
 
-  mouseEvents(player1Ships, placement);
+  Events(player1Ships, placement);
 
   for (let i = 0; i < 5; i += 1) {
     let x = Math.floor(Math.random() * 10);
     let y = Math.floor(Math.random() * 10);
+    const rotate = Math.round(Math.random());
+    if (rotate === 1) {
+      computerShips[i].rotateShip();
+    }
     while (!computerGameboard.placementCheck(x, y, computerShips[i])) {
       x = Math.floor(Math.random() * 10);
       y = Math.floor(Math.random() * 10);
