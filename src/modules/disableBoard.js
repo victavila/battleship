@@ -29,8 +29,14 @@ const disableBoard = (() => {
     }
   };
 
+  const removePlacement = () => {
+    for (let i = 0; i < 100; i += 1) {
+      playerDivs[i].classList.remove('placement');
+    }
+  };
+
   return {
-    computerOn, computerOff, playerOn, playerOff,
+    computerOn, computerOff, playerOn, playerOff, removePlacement,
   };
 })();
 

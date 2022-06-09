@@ -1,8 +1,12 @@
 const display = document.querySelector('.display-text');
 
 const setDisplay = (() => {
-  const setUp = () => {
-    display.textContent = 'Place ships';
+  const place = (shipName) => {
+    display.textContent = `Place ${shipName}`;
+  };
+
+  const startGame = () => {
+    display.textContent = 'Start Game';
   };
 
   const playerTurn = () => {
@@ -22,7 +26,7 @@ const setDisplay = (() => {
   };
 
   return {
-    setUp, playerTurn, computerTurn, shipSunk, gameOver,
+    place, startGame, playerTurn, computerTurn, shipSunk, gameOver,
   };
 })();
 

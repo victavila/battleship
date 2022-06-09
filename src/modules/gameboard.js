@@ -19,8 +19,15 @@ const Gameboard = () => {
     return true;
   };
 
-  const placeShip = (posX, posY, ship) => {
+  const placementCheck = (posX, posY, ship) => {
     if (emptyCheck(posX, posY, ship) && boundsCheck(posX, posY, ship)) {
+      return true;
+    }
+    return false;
+  };
+
+  const placeShip = (posX, posY, ship) => {
+    if (placementCheck(posX, posY, ship)) {
       for (let i = posX; i < ship.length + posX; i += 1) {
         board[posY][i] = ship.name;
       }
@@ -48,7 +55,7 @@ const Gameboard = () => {
   };
 
   return {
-    board, placeShip, receiveAttack, gameOver,
+    board, placementCheck, placeShip, receiveAttack, gameOver,
   };
 };
 

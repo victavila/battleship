@@ -7,6 +7,7 @@ const renderBoards = () => {
       const playerSquare = document.createElement('div');
       playerSquare.setAttribute('data-id', `P-${i}${j}`);
       playerSquare.classList.add('p-square');
+      playerSquare.classList.add('placement');
       playerContainer.appendChild(playerSquare);
 
       const computerSquare = document.createElement('div');

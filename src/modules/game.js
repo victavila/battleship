@@ -13,6 +13,8 @@ const loadGame = () => {
   const player1Ships = [];
   const computerShips = [];
 
+  const placement = [];
+
   const Carrier1 = Ship(5, 'Carrier');
   const Battleship1 = Ship(4, 'Battleship');
   const Destroyer1 = Ship(3, 'Destroyer');
@@ -32,16 +34,34 @@ const loadGame = () => {
   const playerGameboard = Gameboard();
   const computerGameboard = Gameboard();
 
-  setDisplay.setUp();
-
   renderBoards();
 
+  setDisplay.place(Carrier1.name);
+
   // Place ships on respective boards
-  playerGameboard.placeShip(0, 0, Carrier1);
-  playerGameboard.placeShip(0, 2, Battleship1);
-  playerGameboard.placeShip(0, 4, Destroyer1);
-  playerGameboard.placeShip(0, 6, Submarine1);
-  playerGameboard.placeShip(0, 8, PatrolBoat1);
+  document.addEventListener('click', (e) => {
+    if (e.target.className === 'p-square placement') {
+      const x = e.target.dataset.id[3];
+      const y = e.target.dataset.id[2];
+      for (let i = 0; i < 5; i += 1) {
+        if (!placement.includes(player1Ships[i])) {
+          if (i < 4) {
+            setDisplay.place(player1Ships[i + 1].name);
+          }
+          if (playerGameboard.placementCheck(+x, +y, player1Ships[i])) {
+            playerGameboard.placeShip(+x, +y, player1Ships[i]);
+            placement.push(player1Ships[i]);
+            updateBoards(playerGameboard.board, computerGameboard.board);
+            if (i === 4) {
+              setDisplay.startGame();
+            }
+            break;
+          }
+          break;
+        }
+      }
+    }
+  });
 
   computerGameboard.placeShip(0, 0, Carrier2);
   computerGameboard.placeShip(0, 2, Battleship2);
