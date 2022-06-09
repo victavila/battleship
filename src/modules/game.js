@@ -63,11 +63,15 @@ const loadGame = () => {
     }
   });
 
-  computerGameboard.placeShip(0, 0, Carrier2);
-  computerGameboard.placeShip(0, 2, Battleship2);
-  computerGameboard.placeShip(0, 4, Destroyer2);
-  computerGameboard.placeShip(0, 6, Submarine2);
-  computerGameboard.placeShip(0, 8, PatrolBoat2);
+  for (let i = 0; i < 5; i += 1) {
+    let x = Math.floor(Math.random() * 10);
+    let y = Math.floor(Math.random() * 10);
+    while (!computerGameboard.placementCheck(x, y, computerShips[i])) {
+      x = Math.floor(Math.random() * 10);
+      y = Math.floor(Math.random() * 10);
+    }
+    computerGameboard.placeShip(x, y, computerShips[i]);
+  }
 
   // Render boards
   updateBoards(playerGameboard.board, computerGameboard.board);
