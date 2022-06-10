@@ -39,6 +39,8 @@ const loadGame = () => {
 
   setDisplay.place(Carrier1.name);
 
+  disableBoard.computerOn();
+
   // Place ships on respective boards
   document.addEventListener('click', (e) => {
     if (e.target.className === 'p-square placement') {
@@ -58,6 +60,7 @@ const loadGame = () => {
               disableBoard.removePlacement();
               disableBoard.resetWidths();
               disableBoard.hideButton();
+              disableBoard.computerOff();
             }
             break;
           }
