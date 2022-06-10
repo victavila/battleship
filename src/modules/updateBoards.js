@@ -13,17 +13,17 @@ const updateBoards = (playerBoard, computerBoard) => {
       if (ships.includes(playerBoard[i][j])) {
         playerDivs[count].classList.add('purple');
       } else if (playerBoard[i][j] === 'hit') {
-        playerDivs[count].textContent = 'x';
+        playerDivs[count].textContent = '\u00d7';
         playerDivs[count].classList.add('hit');
       } else if (playerBoard[i][j] === 'miss') {
-        playerDivs[count].textContent = 'o';
+        playerDivs[count].textContent = '\u2022';
         playerDivs[count].classList.add('miss');
       }
       if (computerBoard[i][j] === 'hit') {
-        computerDivs[count].textContent = 'x';
+        computerDivs[count].textContent = '\u00d7';
         computerDivs[count].classList.add('hit');
       } else if (computerBoard[i][j] === 'miss') {
-        computerDivs[count].textContent = 'o';
+        computerDivs[count].textContent = '\u2022';
         computerDivs[count].classList.add('miss');
       }
       count += 1;

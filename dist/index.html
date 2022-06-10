@@ -6,25 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Battleship</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script src="main.js" defer></script>
   </head>
   <body>
     <header>
-      <div class="title">Battleship</div>
+      <div class="title-container">
+        <h1 class="title">Battleship</h1>
+      </div>
     </header>
     <main>
       <div class="main">
+        <div class="center">
+          <div class="display">
+            <h2 class="display-text"></h2>
+            <button class="rotate">Rotate</button>
+          </div>
+          <div class="play-container">
+            <button class="play">Play Again</button>
+          </div>
+        </div>
         <div class="boards">
           <div class="player-board board"></div>
-          <div class="center">
-            <div class="display">
-              <h2 class="display-text"></h2>
-              <button class="rotate">Rotate</button>
-            </div>
-            <div class="play-container">
-              <button class="play">Play Again</button>
-            </div>
-          </div>
           <div class="computer-board board"></div>
         </div>
       </div>

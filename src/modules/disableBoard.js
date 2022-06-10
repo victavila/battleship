@@ -45,7 +45,7 @@ const disableBoard = (() => {
   };
 
   const hideButton = () => {
-    rotateButton.style.visibility = 'hidden';
+    rotateButton.style.display = 'none';
   };
 
   const showPlayButton = () => {

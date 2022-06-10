@@ -1,6 +1,8 @@
 import loadGame from './game';
 
 const playButton = document.querySelector('.play');
+const rotateButton = document.querySelector('.rotate');
+
 const playerBoard = document.querySelector('.player-board');
 const computerBoard = document.querySelector('.computer-board');
 
@@ -15,6 +17,7 @@ const gameLoop = () => {
 
   playButton.addEventListener('click', (e) => {
     e.target.style.visibility = 'hidden';
+    rotateButton.style.display = 'block';
     removeAllChildNodes(playerBoard);
     removeAllChildNodes(computerBoard);
     loadGame();
