@@ -7,7 +7,7 @@ const playerDivs = playerContainer.children;
 const rotateButton = document.querySelector('.rotate');
 const playButton = document.querySelector('.play');
 
-const disableBoard = (() => {
+const dom = (() => {
   const computerOn = () => {
     for (let i = 0; i < 100; i += 1) {
       computerDivs[i].classList.add('disable');
@@ -64,4 +64,4 @@ const disableBoard = (() => {
   };
 })();
 
-export default disableBoard;
+export default dom;

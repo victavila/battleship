@@ -3,7 +3,7 @@ import Gameboard from './gameboard';
 import Player from './player';
 import renderBoards from './renderBoards';
 import updateBoards from './updateBoards';
-import disableBoard from './disableBoard';
+import dom from './dom';
 import setDisplay from './display';
 import Events from './mouseEvents';
 
@@ -39,7 +39,7 @@ const loadGame = () => {
 
   setDisplay.place(Carrier1.name);
 
-  disableBoard.computerOn();
+  dom.computerOn();
 
   // Place ships on respective boards
   document.addEventListener('click', (e) => {
@@ -57,10 +57,10 @@ const loadGame = () => {
             updateBoards(playerGameboard.board, computerGameboard.board);
             if (i === 4) {
               setDisplay.startGame();
-              disableBoard.removePlacement();
-              disableBoard.resetWidths();
-              disableBoard.hideButton();
-              disableBoard.computerOff();
+              dom.removePlacement();
+              dom.resetWidths();
+              dom.hideButton();
+              dom.computerOff();
             }
             break;
           }
@@ -98,8 +98,8 @@ const loadGame = () => {
         const shipName = computerGameboard.board[coord[1]][coord[0]];
         computerGameboard.receiveAttack(coord[0], coord[1]);
         updateBoards(playerGameboard.board, computerGameboard.board);
-        disableBoard.computerOn();
-        disableBoard.playerOff();
+        dom.computerOn();
+        dom.playerOff();
         setDisplay.computerTurn();
         for (let i = 0; i < computerShips.length; i += 1) {
           if (computerShips[i].name === shipName) {
@@ -118,10 +118,10 @@ const loadGame = () => {
       playerGameboard.receiveAttack(randCoord[0], randCoord[1]);
       updateBoards(playerGameboard.board, computerGameboard.board);
       setTimeout(() => {
-        disableBoard.computerOff();
+        dom.computerOff();
       }, 1500);
       setTimeout(() => {
-        disableBoard.playerOn();
+        dom.playerOn();
       }, 1500);
       setTimeout(() => {
         setDisplay.playerTurn();
@@ -136,24 +136,24 @@ const loadGame = () => {
       }
       if (playerGameboard.gameOver()) {
         setTimeout(() => {
-          disableBoard.showPlayButton();
+          dom.showPlayButton();
         }, 1500);
         setTimeout(() => {
-          disableBoard.computerOn();
+          dom.computerOn();
         }, 1500);
         setTimeout(() => {
-          disableBoard.playerOn();
+          dom.playerOn();
         }, 1500);
         setTimeout(() => {
           setDisplay.gameOver(computer.name);
         }, 1500);
       } else if (computerGameboard.gameOver()) {
-        disableBoard.showPlayButton();
+        dom.showPlayButton();
         setTimeout(() => {
-          disableBoard.computerOn();
+          dom.computerOn();
         }, 1500);
         setTimeout(() => {
-          disableBoard.playerOn();
+          dom.playerOn();
         }, 1500);
         setTimeout(() => {
           setDisplay.gameOver(player1.name);
